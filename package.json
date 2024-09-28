@@ -1,0 +1,18 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "To-do List",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sujay",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.0"
+  }
+}

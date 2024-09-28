@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do List</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sub-box">
+        <div class="header-box">
+          <h1>Today</h1>
+        </div>
+
+        <!-- Box for the task list -->
+        <div class="list-box">
+          <ul class="item-list">
+            <li>
+              <input type="checkbox" />
+              <label">Wash Hair</label>
+            </li>
+            <li>
+              <input type="checkbox" />
+              <label >Buy Cheese</label>
+            </li>
+
+            <li>
+              <input type="checkbox" />
+              <label>Write Essay</label>
+            </li>
+
+          </ul>
+          <div class="input-container">
+            <form id="itemForm" action="/items" method="POST">
+              <input
+                type="text"
+                placeholder="New items"
+                id="input-field"
+                name="item"
+                required
+              />
+              <button type="submit" id="circular-btn">+</button>
+            </form>
+          </div>
+          <!-- Task input Box -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>

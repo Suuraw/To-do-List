@@ -1,0 +1,112 @@
+ body{
+    background: url();
+ }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Container for both boxes */
+.container {
+
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center;
+    min-height: 100vh;
+    align-items:center;
+    background-color: #f0f0f0;
+}
+.sub-box{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    align-items: center;
+}
+
+.header-box {
+    margin: 40px;
+    /* padding: 20px; */
+    padding-top: 3px;
+    padding-bottom: 4px;
+    width: 350px;
+    background-color: rgb(155, 118, 221);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(155, 118, 221, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+/* Styling for the box containing the list of tasks */
+.list-box {
+    
+    width: 350px;
+    min-width: 200px;
+    max-height: 100%;
+    background-color: white;
+    color: black;
+    border-radius: 6px;
+    box-shadow: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.list-box {
+    max-height: 500px;
+    overflow-y: auto;
+}
+li{
+    padding: 10px;
+    padding-left: 15px;
+}
+ul li:first-child{
+    margin-top: 10px;
+}
+
+input[type="checkbox"] {
+    accent-color: rgb(155, 118, 221); /* Customize checkbox color */
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    
+}
+/* Bullet point default mein rahta hai so set to default */
+ul {
+    list-style-type: none;
+}
+
+
+label {
+    font-size: 16px;
+}
+/* input field style */
+#input-field {
+    margin-top: 10px;
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(155, 118, 221);
+    font-size: 16px;
+    font-weight: lighter;
+    outline: none; /* Remove default blue outline */
+}
+/* style circular btn */
+#circular-btn{
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: rgb(155, 118, 221);
+    font-weight: bolder;
+    font-size: large;
+}
+
+.input-container{
+    padding-left: 10px;
+}
+#circular-btn:hover{
+    cursor: pointer;
+}
