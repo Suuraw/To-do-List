@@ -1,19 +1,27 @@
- body{
-    background-color: black;
- }
-* {
-    padding: 0;
+body {
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #000000, #1a0033);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+* {
     box-sizing: border-box;
 }
-/* Asteriod animation */
+
 @keyframes fall {
-    0% {
-        transform: translateY(-5vh) translateX(0);
-    }
-    100% {
-        transform: translateY(105vh) translateX(20vw);
-    }
+    0% { transform: translateY(-5vh) translateX(0); }
+    100% { transform: translateY(105vh) translateX(20vw); }
 }
 
 .asteroid {
@@ -22,9 +30,9 @@
     height: 5px;
     background-color: white;
     border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3);
 }
 
-/* Generate 20 asteroids with different animations */
 .asteroid:nth-child(1) { left: 5%; animation: fall 3s linear infinite; }
 .asteroid:nth-child(2) { left: 15%; animation: fall 4s 1s linear infinite; }
 .asteroid:nth-child(3) { left: 25%; animation: fall 5s 2s linear infinite; }
@@ -46,155 +54,177 @@
 .asteroid:nth-child(19) { left: 90%; animation: fall 3.5s 0.6s linear infinite; }
 .asteroid:nth-child(20) { left: 100%; animation: fall 4.5s 1.4s linear infinite; }
 
-/* Container for both boxes */
 .container {
-
     display: flex;
-    flex-direction: column; /* Align items vertically */
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    
-    align-items:center;
-    background-color: black;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-.sub-box{
+.sub-box {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    height: 70vh;
     align-items: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 .header-box {
-    margin: 40px;
-    /* padding: 20px; */
-    padding-top: 3px;
-    padding-bottom: 4px;
-    width: 350px;
-    background-color: black;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(155, 118, 221, 0.5);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
-/* Styling for the box containing the list of tasks */
 .list-box {
-    width: 350px;
-    min-width: 200px;
-    max-height: 100%;
-    background-color: black; /* Ensures the background is black */
-    color: white;            /* Changes text color to white for visibility */
-    border-radius: 6px;
-    box-shadow: rgb(155, 118, 221) 0 4px 8px; /* Box shadow */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: left;
-    position: relative; /* Set this to allow absolute positioning of children */
-    padding: 20px; /* Optional: Adds padding for spacing */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(155, 118, 221, 0.5);
+    padding: 20px;
+    position: relative;
+    
 }
-
-
 .list-box {
-    max-height: 100vh;
+    max-height: 50vh;
     overflow-y: auto;
 }
-li{
-    padding: 10px;
-    padding-left: 15px;
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
 }
-ul li:first-child{
-    margin-top: 10px;
+
+.item-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(155, 118, 221, 0.3);
+}
+
+#input-field {
+    outline: none; 
 }
 
 input[type="checkbox"] {
-    accent-color: rgb(155, 118, 221); /* Customize checkbox color */
-    width: 16px;
-    height: 16px;
+    accent-color: rgb(155, 118, 221);
+    width: 18px;
+    height: 18px;
     margin-right: 10px;
-    
-}
-input[type="checkbox"]:hover{
     cursor: pointer;
 }
-/* Bullet point default mein rahta hai so set to default */
-ul {
-    list-style-type: none;
-}
-
 
 label {
+    flex-grow: 1;
     font-size: 16px;
+    transition: all 0.3s ease;
 }
-/* input field style */
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: rgb(155, 118, 221);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.edit-btn:hover {
+    transform: scale(1.2);
+}
+
+.input-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+
 #input-field {
-    border-radius: 5px;
-    margin-top: 10px;
-    width: 200px;
+    flex-grow: 1;
     padding: 10px;
     border: none;
-    border-bottom: 2px solid rgb(155, 118, 221);
+    border-radius: 5px 0 0 5px;
     font-size: 16px;
-    font-weight: lighter;
-    outline: none; /* Remove default blue outline */
-    /* background-color: rgb(155, 118, 221);; */
-
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
 }
-/* style circular btn */
-#circular-btn{
+
+#circular-btn {
+    position: absolute;
+    margin-left: 10px;
     border: none;
-    border-radius: 50%;
+    border-radius: 0 5px 5px 0;
     width: 40px;
-    height: 40px;
+    height: 38px;
     color: white;
     background-color: rgb(155, 118, 221);
-    font-weight: bolder;
-    font-size: large;
-    margin-left: 15px;
-}
-
-.input-container{
-    padding-left: 10px;
-}
-#circular-btn:hover{
+    font-weight: bold;
+    font-size: 24px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* edit icon */
-.edit-btn{
-    border: none;
-    margin-left: 10px;
-    outline: none;
-
-}
-.edit-btn:hover{
-    cursor: pointer;
-}
-input{
-   border: 1px solid rgb(155, 118, 221);
-    outline:rgb(155, 118, 221);
-   padding: 5px 10px;
-}
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #111;
-    color: white;
-}
-.strike {
-    text-decoration: line-through; /* Add a line through the text */
-    color: grey; /* Change the text color to grey for a faded effect */
-    opacity: 0.6; /* Slightly fade the text */
+#circular-btn:hover {
+    background-color: rgb(175, 138, 241);
 }
 
 #delete-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    cursor: pointer;
-    background-color: black;
+    background: none;
     border: none;
-    z-index: 10; /* Make sure it's above other elements */
+    color: rgb(155, 118, 221);
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
+#delete-btn:hover {
+    transform: scale(1.2);
+}
+
+.strike {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .sub-box {
+        width: 90%;
+    }
+}
+
+/* input[type="text"] {
+   
+    outline: none;
+    height: 30px;
+    font-size: medium;
+
+} */
+.hidden-field{
+    outline: none;
+    height: 30px;
+    font-size: medium;
+}

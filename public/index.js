@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const label = button.previousElementSibling; // Get the label
                 const input = document.createElement('input'); // Create input field
                 input.type = 'text';
+                input.classList.add('hidden-field');
                 input.value = label.innerText; // Set input value to the label text
 
                 label.replaceWith(input); // Replace label with input

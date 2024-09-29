@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-do List</title>
-    <link href="styles.css" rel="stylesheet" />
-  </head>
-  <body>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
     <div class="asteroid"></div>
     <div class="asteroid"></div>
     <div class="asteroid"></div>
@@ -28,53 +28,52 @@
     <div class="asteroid"></div>
     <div class="asteroid"></div>
     <div class="container">
-      <div class="sub-box">
-        <div class="header-box">
-          <h1>Today</h1>
-        </div>
+        <div class="sub-box">
+            <div class="header-box">
+                <h1>Today</h1>
+            </div>
 
-        <!-- Box for the task list -->
-        <div class="list-box">
-          <div class="delete-btn">
-            <button id="delete-btn" required>🗑️</button>
-          </div>
-          <ul class="item-list">
-            <li>
-              <input type="checkbox" />
-              <label>Wash Hair</label>
-              <span class="edit-btn">✏️</span>
-            </li>
-            <li>
-              <input type="checkbox" />
-              <label>Buy Cheese</label>
-              <span class="edit-btn">✏️</span>
-            </li>
-
-            <li>
-              <input type="checkbox" checked=""/>
-              <label>Write Essay</label>
-              <span class="edit-btn">✏️</span>
-            </li>
-          </ul>
-          <div class="input-container">
-            <form id="itemForm" action="/items" method="POST">
-              <input
-                type="text"
-                placeholder="New items"
-                id="input-field"
-                name="item"
-                required
-              />
-              <button type="submit" id="circular-btn">+</button>
-            </form>
-          </div>
-          <!-- Task input Box -->
+            <!-- Box for the task list -->
+            <div class="list-box">
+                <div class="delete-btn">
+                    <button id="delete-btn" required>🗑️</button>
+                </div>
+                <ul class="item-list">
+                    <!-- <li>
+                        <input type="checkbox" />
+                        <label>Wash Hair</label>
+                        <span class="edit-btn">✏️</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" />
+                        <label>Buy Cheese</label>
+                        <span class="edit-btn">✏️</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked="" />
+                        <label>Write Essay</label>
+                        <span class="edit-btn">✏️</span>
+                    </li> -->
+                </ul>
+                <div class="input-container">
+                    <form id="itemForm" action="/items" method="POST">
+                        <input
+                            type="text"
+                            placeholder="New items"
+                            id="input-field"
+                            name="item"
+                            required
+                        />
+                        <button type="submit" id="circular-btn">+</button>
+                    </form>
+                </div>
+                <!-- Task input Box -->
+            </div>
         </div>
-      </div>
     </div>
     <footer>
-      <p>&copy; 2024 Sujay Kumar. All rights reserved.</p>
+        <p>&copy; 2024 Sujay Kumar. All rights reserved.</p>
     </footer>
-  </body>
-  <script src="index.js"></script>
+    <script src="index.js"></script>
+</body>
 </html>
