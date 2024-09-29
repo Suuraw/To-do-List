@@ -2,10 +2,15 @@
   "name": "to-do-list",
   "version": "1.0.0",
   "description": "To-do List",
-  "main": "index.js",
+  "main": "api/server.js",
   "type": "module",
+  "engines": {
+    "node": ">=18.x",
+    "npm": ">=9.x"
+  },
   "scripts": {
-     "start": "node api/server.js",
+    "start": "node api/server.js", 
+    "dev": "nodemon api/server.js", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sujay",
@@ -14,7 +19,9 @@
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
-    "nodemon": "^3.1.7",
     "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"  
   }
 }
