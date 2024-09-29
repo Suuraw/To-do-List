@@ -7,6 +7,26 @@
     <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
+    <div class="asteroid"></div>
     <div class="container">
       <div class="sub-box">
         <div class="header-box">
@@ -15,21 +35,26 @@
 
         <!-- Box for the task list -->
         <div class="list-box">
+          <div class="delete-btn">
+            <button id="delete-btn" required>🗑️</button>
+          </div>
           <ul class="item-list">
             <li>
-              <!-- <input type="checkbox" checked=""/>
-              <label">Wash Hair</label>
+              <input type="checkbox" />
+              <label>Wash Hair</label>
+              <span class="edit-btn">✏️</span>
             </li>
             <li>
-              <input type="checkbox" checked=""/>
-              <label >Buy Cheese</label>
+              <input type="checkbox" />
+              <label>Buy Cheese</label>
+              <span class="edit-btn">✏️</span>
             </li>
 
             <li>
               <input type="checkbox" checked=""/>
               <label>Write Essay</label>
-            </li> -->
-
+              <span class="edit-btn">✏️</span>
+            </li>
           </ul>
           <div class="input-container">
             <form id="itemForm" action="/items" method="POST">
@@ -47,6 +72,9 @@
         </div>
       </div>
     </div>
+    <footer>
+      <p>&copy; 2024 Sujay Kumar. All rights reserved.</p>
+    </footer>
   </body>
   <script src="index.js"></script>
 </html>

@@ -1,0 +1,27 @@
+
+    document.querySelectorAll('.edit-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const label = button.previousElementSibling; // Get the label
+        const input = document.createElement('input'); // Create input field
+        input.type = 'text';
+        input.value = label.innerText; // Set input value to the label text
+        
+        label.replaceWith(input); // Replace label with input
+        input.focus(); // Focus on the input field
+  
+        // Save changes when the user presses 'Enter' or clicks outside
+        const saveChanges = () => {
+          const updatedLabel = document.createElement('label');
+          updatedLabel.innerText = input.value; // Update label with new text
+          input.replaceWith(updatedLabel); // Replace input with label
+        };
+  
+        // Listen for 'Enter' key or input blur to save changes
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') saveChanges();
+        });
+      });
+    });
+  
+
+  rgb(155, 118, 221);
