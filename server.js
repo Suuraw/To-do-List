@@ -41,6 +41,30 @@ app.post("/items", async (req, res) => {
     return res.sendStatus(500); // Send a server error response
   }
 });
+app.post("/update/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { item } = req.body;
+
+    // Use RETURNING * to return the updated row
+    const result = await db.query(
+      "UPDATE list_items SET items = $1 WHERE id = $2",
+      [item, id]
+    );
+
+    // If no rows were updated (invalid ID), return a 404 error
+   
+
+    // Respond with the updated item
+    return res.status(200).json({ status: "ok", updatedItem: result.rows[0] });
+  } catch (err) {
+    console.error("Failed to update the item_list:");
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`The server is running on port ${port}`);

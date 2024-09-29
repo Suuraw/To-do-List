@@ -1,0 +1,96 @@
+<ul class="item-list">
+    <li>
+        <input type="checkbox" data-id="1" />
+        <label>Buy groceries</label>
+        <span class="edit-btn" data-id="1">✏️</span>
+    </li>
+    <li>
+        <input type="checkbox" data-id="2" checked />
+        <label class="strike">Read a book</label>
+        <span class="edit-btn" data-id="2">✏️</span>
+    </li>
+    <li>
+        <input type="checkbox" data-id="3" />
+        <label>Exercise</label>
+        <span class="edit-btn" data-id="3">✏️</span>
+    </li>
+</ul>
+
+<style>
+    .edit-btn {
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .edit-btn:hover {
+        color: #000;
+    }
+
+    .strike {
+        text-decoration: line-through;
+    }
+
+    input[type="text"] {
+        margin-left: 5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const itemList = document.querySelector(".item-list");
+
+        itemList.addEventListener("click", (e) => {
+            if (e.target.classList.contains("edit-btn")) {
+                const listItem = e.target.parentElement;
+                const label = listItem.querySelector("label");
+                const currentText = label.textContent;
+                
+                // Replace the label with an input field to edit
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = currentText;
+                label.replaceWith(input);
+                
+                // Focus on the input and select the text
+                input.focus();
+                input.select();
+
+                // Handle the input blur or Enter key event to save changes
+                input.addEventListener("blur", () => {
+                    saveEdits(input, e.target.dataset.id);
+                });
+
+                input.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter") {
+                        saveEdits(input, e.target.dataset.id);
+                    }
+                });
+            }
+        });
+
+        function saveEdits(input, id) {
+            const updatedText = input.value;
+            
+            // Replace the input with the updated label
+            const label = document.createElement("label");
+            label.textContent = updatedText;
+            input.replaceWith(label);
+
+            // Here you can also make an API call to save the updated task text in the backend
+            // For example:
+            fetch(`/update/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ item: updatedText })
+            }).then(response => {
+                if (!response.ok) {
+                    console.error('Error updating task');
+                }
+            });
+        }
+    });
+</script>

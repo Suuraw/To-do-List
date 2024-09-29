@@ -1,11 +1,50 @@
  body{
-    background: url();
+    background-color: black;
  }
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+/* Asteriod animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-5vh) translateX(0);
+    }
+    100% {
+        transform: translateY(105vh) translateX(20vw);
+    }
+}
+
+.asteroid {
+    position: absolute;
+    width: 2px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Generate 20 asteroids with different animations */
+.asteroid:nth-child(1) { left: 5%; animation: fall 3s linear infinite; }
+.asteroid:nth-child(2) { left: 15%; animation: fall 4s 1s linear infinite; }
+.asteroid:nth-child(3) { left: 25%; animation: fall 5s 2s linear infinite; }
+.asteroid:nth-child(4) { left: 35%; animation: fall 3.5s 0.5s linear infinite; }
+.asteroid:nth-child(5) { left: 45%; animation: fall 4.5s 1.5s linear infinite; }
+.asteroid:nth-child(6) { left: 55%; animation: fall 3s 2.5s linear infinite; }
+.asteroid:nth-child(7) { left: 65%; animation: fall 4s 0.7s linear infinite; }
+.asteroid:nth-child(8) { left: 75%; animation: fall 5s 1.8s linear infinite; }
+.asteroid:nth-child(9) { left: 85%; animation: fall 3.5s 2.3s linear infinite; }
+.asteroid:nth-child(10) { left: 95%; animation: fall 4.5s 0.2s linear infinite; }
+.asteroid:nth-child(11) { left: 10%; animation: fall 3s 1.2s linear infinite; }
+.asteroid:nth-child(12) { left: 20%; animation: fall 4s 2.7s linear infinite; }
+.asteroid:nth-child(13) { left: 30%; animation: fall 5s 0.9s linear infinite; }
+.asteroid:nth-child(14) { left: 40%; animation: fall 3.5s 1.6s linear infinite; }
+.asteroid:nth-child(15) { left: 50%; animation: fall 4.5s 2.1s linear infinite; }
+.asteroid:nth-child(16) { left: 60%; animation: fall 3s 0.4s linear infinite; }
+.asteroid:nth-child(17) { left: 70%; animation: fall 4s 1.9s linear infinite; }
+.asteroid:nth-child(18) { left: 80%; animation: fall 5s 2.8s linear infinite; }
+.asteroid:nth-child(19) { left: 90%; animation: fall 3.5s 0.6s linear infinite; }
+.asteroid:nth-child(20) { left: 100%; animation: fall 4.5s 1.4s linear infinite; }
 
 /* Container for both boxes */
 .container {
@@ -15,7 +54,7 @@
     align-items: center;
     min-height: 100vh;
     align-items:center;
-    background-color: #f0f0f0;
+    background-color: black;
 }
 .sub-box{
     margin-top: 40px;
@@ -31,7 +70,7 @@
     padding-top: 3px;
     padding-bottom: 4px;
     width: 350px;
-    background-color: rgb(155, 118, 221);
+    background-color: black;
     color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(155, 118, 221, 0.5);
@@ -46,11 +85,12 @@
     min-width: 200px;
     max-height: 100%;
     background-color: white;
-    color: black;
+    color: white;
     border-radius: 6px;
-    box-shadow: black;
+    box-shadow: rgb(155, 118, 221);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
+    background-color: black;
 }
 
 .list-box {
@@ -72,6 +112,9 @@ input[type="checkbox"] {
     margin-right: 10px;
     
 }
+input[type="checkbox"]:hover{
+    cursor: pointer;
+}
 /* Bullet point default mein rahta hai so set to default */
 ul {
     list-style-type: none;
@@ -83,6 +126,7 @@ label {
 }
 /* input field style */
 #input-field {
+    border-radius: 5px;
     margin-top: 10px;
     width: 200px;
     padding: 10px;
@@ -91,6 +135,8 @@ label {
     font-size: 16px;
     font-weight: lighter;
     outline: none; /* Remove default blue outline */
+    /* background-color: rgb(155, 118, 221);; */
+
 }
 /* style circular btn */
 #circular-btn{
@@ -102,6 +148,7 @@ label {
     background-color: rgb(155, 118, 221);
     font-weight: bolder;
     font-size: large;
+    margin-left: 15px;
 }
 
 .input-container{
@@ -109,4 +156,26 @@ label {
 }
 #circular-btn:hover{
     cursor: pointer;
+}
+
+/* edit icon */
+.edit-btn{
+    border: none;
+    margin-left: 10px;
+    outline: none;
+
+}
+.edit-btn:hover{
+    cursor: pointer;
+}
+input{
+   border: 1px solid rgb(155, 118, 221);
+    outline:rgb(155, 118, 221);
+   padding: 5px 10px;
+}
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #111;
+    color: white;
 }
