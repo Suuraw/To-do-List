@@ -64,6 +64,34 @@ app.post("/update/:id", async (req, res) => {
 });
 
 
+app.post("/items/:id", async (req, res) => {
+  const id = req.params.id; // Get the item ID from the URL parameters
+  const { completed } = req.body; // Get the completed status from the request body
+
+  try {
+      // Update the completed status in the database
+      await db.query("UPDATE list_items SET completed = $1 WHERE id = $2", [completed, id]);
+      res.sendStatus(200); // Send a success response
+  } catch (err) {
+      console.error(err);
+      return res.sendStatus(500); // Send a server error response if something goes wrong
+  }
+});
+
+app.post("/remove", async (req, res) => {
+  const ids = req.body.ids; // Expecting an array of IDs
+
+  try {
+      // Prepare a parameterized query for multiple IDs
+      const query = `DELETE FROM list_items WHERE id = ANY($1::int[])`; // Using PostgreSQL's ANY to delete multiple IDs
+      await db.query(query, [ids]); // Pass the array of IDs to the query
+
+      res.status(200).json({ message: "Items deleted successfully" });
+  } catch (err) {
+      console.error("Failed to delete items:", err);
+      res.status(500).json({ error: "Failed to delete items or items don't exist" });
+  }
+});
 
 
 app.listen(port, () => {

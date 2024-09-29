@@ -80,18 +80,19 @@
 
 /* Styling for the box containing the list of tasks */
 .list-box {
-    
     width: 350px;
     min-width: 200px;
     max-height: 100%;
-    background-color: white;
-    color: white;
+    background-color: black; /* Ensures the background is black */
+    color: white;            /* Changes text color to white for visibility */
     border-radius: 6px;
-    box-shadow: rgb(155, 118, 221);
+    box-shadow: rgb(155, 118, 221) 0 4px 8px; /* Box shadow */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
-    background-color: black;
+    position: relative; /* Set this to allow absolute positioning of children */
+    padding: 20px; /* Optional: Adds padding for spacing */
 }
+
 
 .list-box {
     max-height: 500px;
@@ -179,3 +180,19 @@ footer {
     background-color: #111;
     color: white;
 }
+.strike {
+    text-decoration: line-through; /* Add a line through the text */
+    color: grey; /* Change the text color to grey for a faded effect */
+    opacity: 0.6; /* Slightly fade the text */
+}
+
+#delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: black;
+    border: none;
+    z-index: 10; /* Make sure it's above other elements */
+}
+
