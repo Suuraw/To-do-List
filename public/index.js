@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                     if (response.ok) {
                         input.replaceWith(updatedLabel); // Replace input with updated label
-                        await loadItems(); // Reload items after updating
+                        await saveChanges(); // Reload items after updating
                     } else {
                         console.error('Error updating item:', response.statusText);
                     }
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <span class="edit-btn">✏️</span>`; // Use item from response
             unorderedList.appendChild(newItem); // Add new item to the list
             form.reset(); // Clear the input field
-            window.location.reload();
+            // window.location.reload();
             // Reattach event listeners for the newly added item
             attachEditButtonListeners();
         } else {
