@@ -14,9 +14,12 @@
     flex-direction: column; /* Align items vertically */
     align-items: center;
     min-height: 100vh;
+    
     align-items:center;
     background-color: #f0f0f0;
+    
 }
+
 .sub-box{
     margin-top: 40px;
     display: flex;
@@ -43,8 +46,8 @@
 .list-box {
     
     width: 350px;
-    min-width: 200px;
-    max-height: 100%;
+    min-width: 300px;
+    max-height: 100vh;
     background-color: white;
     color: black;
     border-radius: 6px;
@@ -54,7 +57,7 @@
 }
 
 .list-box {
-    max-height: 500px;
+    max-height: 100vh;
     overflow-y: auto;
 }
 li{
@@ -109,4 +112,9 @@ label {
 }
 #circular-btn:hover{
     cursor: pointer;
+}
+
+.strike {
+    text-decoration: line-through;
+    color: gray; /* Optional: Change the color for a better effect */
 }

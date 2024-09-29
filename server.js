@@ -30,7 +30,6 @@ app.get("/items", async(req, res) => {
     res.sendStatus(500);
   }
 });
-
 app.post("/items", async (req, res) => {
   const { item } = req.body; // Make sure your frontend sends 'item'
   try {
@@ -41,6 +40,34 @@ app.post("/items", async (req, res) => {
     return res.sendStatus(500); // Send a server error response
   }
 });
+app.post("/items/:id", async (req, res) => {
+  const id = req.params.id; // Get the item ID from the URL parameters
+  const { completed } = req.body; // Get the completed status from the request body
+
+  try {
+      // Update the completed status in the database
+      await db.query("UPDATE list_items SET completed = $1 WHERE id = $2", [completed, id]);
+      res.sendStatus(200); // Send a success response
+  } catch (err) {
+      console.error(err);
+      return res.sendStatus(500); // Send a server error response if something goes wrong
+  }
+});
+
+app.post("/remove/:id",async(req,res)=>
+{
+  const id=req.params.id;
+
+  try{
+    await db.query("DELETE FROM list_items WHERE id = ($1)",[id])
+    res.status(200).json({message:"Item deleted "})
+  }
+  catch(err)
+  {
+    console.log("failed to delete or the items doesn't exist");
+  }
+})
+
 
 app.listen(port, () => {
   console.log(`The server is running on port ${port}`);
