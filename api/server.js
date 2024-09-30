@@ -4,15 +4,15 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import pg from "pg";
 import dotenv from "dotenv";
-import { createRequire } from "module";
 
 dotenv.config(); // Load environment variables
 
 const db = new pg.Client({
-  connectionString: process.env.DATABASE_URL || require('./.env').DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT || 5432,
 });
 
 // Attempt to connect to the database

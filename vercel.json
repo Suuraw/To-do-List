@@ -19,5 +19,8 @@
       "src": "/(.*)",
       "dest": "/public/$1"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "http://localhost:5432"
+  }
 }
