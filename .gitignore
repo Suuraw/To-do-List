@@ -3,3 +3,4 @@ node_modules/
 # It's a good practice to include package-lock.json
 # If you want to ignore it, use the following line, but it's not recommended:
 # package-lock.json
+.vercel
