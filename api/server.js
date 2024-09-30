@@ -32,11 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+// Serve the main HTML file
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));  // Changed from "index.htm" to "index.html"
+});
+
 // API Routes
-app.get("/",(req,res)=>
-{
-res.sendFile(path.join(__dirname,"index.htm"))
-})
 app.get("/items", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM list_items");
