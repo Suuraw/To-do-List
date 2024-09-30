@@ -9,8 +9,8 @@
     "npm": "10.7.0"
   },
   "scripts": {
-    "start": "node api/server.js", 
-    "dev": "nodemon api/server.js", 
+    "start": "node api/server.js",
+    "dev": "nodemon api/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel-build": "echo 'No build step required'"
   },

@@ -21,6 +21,6 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "http://localhost:5432"
+    "DATABASE_URL": "postgresql://to_do_list_95xr_user:Lcsv0Txm9O94OGRV73uoUqGIqiTHBxc0@dpg-crt63im8ii6s73eidhg0-a.oregon-postgres.render.com/to_do_list_95xr"
   }
 }

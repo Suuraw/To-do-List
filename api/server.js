@@ -7,16 +7,15 @@ import dotenv from "dotenv";
 
 dotenv.config(); // Load environment variables
 
-const db = new pg.Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT || 5432,
+const pool = new pg.Pool({
+  connectionString: process.env.DB_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // Attempt to connect to the database
-db.connect((err) => {
+pool.connect((err) => {
   if (err) {
     console.error("Failed to connect to the database:", err);
   } else {
@@ -40,7 +39,7 @@ app.get("/", (req, res) => {
 // API Routes
 app.get("/items", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM list_items");
+    const result = await pool.query("SELECT * FROM list_items");
     res.json(result.rows);
   } catch (err) {
     console.error("Error fetching items:", err);
@@ -51,7 +50,7 @@ app.get("/items", async (req, res) => {
 app.post("/items", async (req, res) => {
   const { item } = req.body;
   try {
-    await db.query("INSERT INTO list_items(items) VALUES ($1)", [item]);
+    await pool.query("INSERT INTO list_items(items) VALUES ($1)", [item]);
     return res.json({ status: "ok", item });
   } catch (err) {
     console.error("Error adding item:", err);
@@ -63,7 +62,7 @@ app.post("/update/:id", async (req, res) => {
   const id = req.params.id;
   const { item } = req.body;
   try {
-    const result = await db.query(
+    const result = await pool.query(
       "UPDATE list_items SET items = $1 WHERE id = $2",
       [item, id]
     );
@@ -78,7 +77,7 @@ app.post("/items/:id", async (req, res) => {
   const id = req.params.id;
   const { completed } = req.body;
   try {
-    await db.query("UPDATE list_items SET completed = $1 WHERE id = $2", [completed, id]);
+    await pool.query("UPDATE list_items SET completed = $1 WHERE id = $2", [completed, id]);
     res.sendStatus(200);
   } catch (err) {
     console.error("Error updating item completion status:", err);
@@ -90,7 +89,7 @@ app.post("/remove", async (req, res) => {
   const ids = req.body.ids;
   try {
     const query = `DELETE FROM list_items WHERE id = ANY($1::int[])`;
-    await db.query(query, [ids]);
+    await pool.query(query, [ids]);
     res.status(200).json({ message: "Items deleted successfully" });
   } catch (err) {
     console.error("Error deleting items:", err);
