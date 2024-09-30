@@ -12,6 +12,10 @@
       "dest": "/api/server.js"
     },
     {
+      "src": "/feedback/:id",
+      "dest": "/api/feedback/:id"
+    },
+    {
       "src": "/(.*)",
       "dest": "/public/$1"
     }
