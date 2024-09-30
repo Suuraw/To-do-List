@@ -33,6 +33,10 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // API Routes
+app.get("/",(req,res)=>
+{
+res.sendFile(path.join(__dirname,"index.htm"))
+})
 app.get("/items", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM list_items");
